@@ -40,7 +40,7 @@ function detectTransport(): SendmailTransport.Options | SMTPConnection.Options |
       auth,
       secure: port === 465,
       tls: {
-        rejectUnauthorized: !isENVDev,
+        rejectUnauthorized: process.env.EMAIL_ALLOW_SELF_SIGNED ? false : !isENVDev,
       },
     };
 
