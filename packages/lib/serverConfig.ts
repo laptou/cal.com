@@ -34,6 +34,10 @@ function detectTransport(): SendmailTransport.Options | SMTPConnection.Options |
           }
         : undefined;
 
+    if (process.env.EMAIL_ALLOW_SELF_SIGNED) {
+      console.log("allowing self-signed emails");
+    }
+
     const transport = {
       host: process.env.EMAIL_SERVER_HOST,
       port,
